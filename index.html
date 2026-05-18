@@ -1,0 +1,82 @@
+html<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem do Dia</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; color: #fff; text-align: center; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: background 0.5s ease; }
+        .container { background: rgba(0, 0, 0, 0.65); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 450px; width: 100%; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        h1 { font-size: 26px; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        h2 { font-size: 20px; margin-bottom: 20px; color: #ffeb3b; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        p { margin-bottom: 20px; font-size: 15px; color: #ddd; }
+        .card-video { display: none; width: 100%; }
+        video { width: 100%; border-radius: 12px; background: #000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        
+        /* Fundos personalizados para cada dia */
+        .bg-domingo { background: linear-gradient(135deg, #f857a6, #ff5858); }
+        .bg-segunda { background: linear-gradient(135deg, #4776e6, #8e54e9); }
+        .bg-terca { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .bg-quarta { background: linear-gradient(135deg, #f12711, #f5af19); }
+        .bg-quinta { background: linear-gradient(135deg, #833ab4, #fd1d1d); }
+        .bg-sexta { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+        .bg-sabado { background: linear-gradient(135deg, #fe8c00, #f83600); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sua Mensagem de Hoje</h1>
+        <h2 id="nome-dia">Carregando dia...</h2>
+        <p>Toque no player abaixo para assistir ao seu vídeo de 5 segundos.</p>
+
+        <!-- https://drive.google.com/file/d/1cqbbRfoLN-nhUwvo0br180y_qrVbCw4V/https://google.com-->
+        <div id="video-0" class="card-video">
+            <video controls playsinline><source src="video1.mp4" type="video/mp4"></video>
+        </div>
+        <!--https://drive.google.com/file/d/1pNSIG1KsmiAkRfOzIGC_0OiNTrNAtLlZ/https://google.com-->
+        <div id="video-1" class="card-video">
+            <video controls playsinline><source src="video2.mp4" type="video/mp4"></video>
+        </div>
+        <!-- https://drive.google.com/file/d/17aegZg-TD9kadyP6sdhR1Y1QK6-vnNMA/https://google.com-->
+        <div id="video-2" class="card-video">
+            <video controls playsinline><source src="video3.mp4" type="video/mp4"></video>
+        </div>
+        <!-- https://drive.google.com/file/d/1TNp9acZwIMUGVXdouVzmRtI3sWYk68T4/https://google.com-->
+        <div id="video-3" class="card-video">
+            <video controls playsinline><source src="video4.mp4" type="video/mp4"></video>
+        </div>
+        <!-- https://drive.google.com/file/d/1KhnEIQoyQZpxR1hSBxZerPy8m-2C0o-b/https://google.com-->
+
+
+        <div id="video-4" class="card-video">
+            <video controls playsinline><source src="video5.mp4" type="video/mp4"></video>
+        </div>
+        <!-- https://drive.google.com/file/d/1PXVhFk84T5OywatL_h-KMJEkQ_003W7D/https://google.com-->
+        <div id="video-5" class="card-video">
+            <video controls playsinline><source src="video6.mp4" type="video/mp4"></video>
+        </div>
+        <!-- https://drive.google.com/file/d/1YEgxl_d38PINSR4cZKs6AST4hiMWpOt9/https:google.com -->
+        <div id="video-6" class="card-video">
+            <video controls playsinline><source src="video7.mp4" type="video/mp4"></video>
+        </div>
+    </div>
+
+    <script>
+        const diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+        const classesFundo = ["bg-domingo", "bg-segunda", "bg-terca", "bg-quarta", "bg-quinta", "bg-sexta", "bg-sabado"];
+        
+        // Pega o dia correto do sistema do cliente (0 = Domingo, 1 = Segunda... 6 = Sábado)
+        const hoje = new Date().getDay();
+        
+        // Define o texto do dia e o fundo dinâmico
+        document.getElementById("nome-dia").innerText = diasSemana[hoje];
+        document.body.className = classesFundo[hoje];
+        
+        // Mostra apenas o vídeo correspondente ao dia de hoje
+        document.getElementById("video-" + hoje).style.display = "block";
+    </script>
+
+</body>
+</html>
